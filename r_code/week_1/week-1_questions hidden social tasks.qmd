@@ -1,0 +1,538 @@
+# This file
+
+You should only work within this quarto file, so don't make a new script. Try clicking on the button above that says "Visual". You might like that view of the file more. On canvas, you simply submit this .qmd file. Save your file regularly while working on it :)
+
+# Assignment description
+
+Next to the R questions (4 points), you should complete EITHER the advanced R questions OR the python questions (1 point). This week's assignment is worth 5% of your final course grade. Careful: If questions from both sections are (partially) filled in, only the advanced R questions will be graded (even if they result in fewer points than the Python questions). Instead of copying solutions from classmates or websites, please post lots of questions on Slack or message the TAs.
+
+## Q0; Example task + solution
+
+Make a string variable and print its content. Click on the arrow inside the code block to run the code.
+
+```{r}
+#Solution (~2 lines of code)
+my_string <- "This is my string"
+print(my_string)
+```
+
+# R questions
+
+Final tip: If you edit this file in "Source" mode instead of "Visual" (see buttons above) DON'T WRITE ANYTHING BEHIND EACH BLOCK's CLOSING TICKS \`\`\`. It will lead to a weird error. Also don't make new code blocks. GOOD LUCK!
+
+#R1
+
+Run a function from the lecture to find out your current working directory. As an example, the teacher's current working directory is \[1\] "C:/Users/Teacher/Desktop/R_course/week1".
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code below this comment)
+getwd()
+
+```
+
+#R2
+
+Go into your file folders and make a new folder called r_course, with a subfolder called week_1 (no typos please; you don't need to write any code, just do it the usual way). If you already have a folder for this course, just rename it. Next, use code to set your working directory to the new folder. There might be a warning... you can either not worry about it or google it :)
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code)
+
+setwd("C:/Users/Kristien/OneDrive - UvA/Documents/ResMas Psych/PiPS/PiPS Github/PIPS/r_code/week_1")
+```
+
+#R3
+
+Save this .qmd file into that folder. Then, write a line of code that uses the list.files() function. Additionally, write a line of code that tells you helpful details about the list.files function.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~2 lines of code)
+list.files()
+?list.files()
+```
+
+#R4
+
+THIS TASK WILL ONLY BE REVEALED DURING THE TUTORIAL SESSIONS.
+```{r}
+hours_sleep = 3.5
+sleepiness = "9"
+# I can only add these two variables if I convert the string into a numeric
+hours_sleep + as.numeric(sleepiness)
+
+```
+
+#R5
+
+What happens in the two lines of code below? How many objects are in your workspace afterwards?
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~2 new lines of comments)
+rm(list = ls())
+a <- b <- ab <- ba <- c <- 1
+# first line removes all objects from the environment
+# second line assigns 5 objects the value 1, hence there are five objects in the environment right now
+```
+
+#R6
+THIS TASK WILL ONLY BE REVEALED DURING THE TUTORIAL SESSIONS.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~2 lines of code)
+interview = "I am extraverted, open to new experiences, somewhat neurotic and okayish conscientious, and very agreeable."
+print(interview)
+gsub("somewhat", "only a little", interview)
+
+```
+
+#R7
+
+Define a vector with elements 2, FALSE, -1.243, and "test" in that order. What is the datatype of the different elements after being put into the vector?
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code + 1 comment)
+v = c(2, FALSE, -1.243, "test")
+mode(v) # the mode of the elements in the vector are coerced to characters
+```
+
+#R8
+
+The code below gives NA; explain why this happes. Then, compute the mean with the missing value removed. Hint: help files of mean function
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (change SECOND line of code)
+participant_ages <- c(21,26,27,19,49,NA) # Mean cannot be computed with NA elements
+mean(participant_ages, na.rm = TRUE)
+```
+
+#R9
+
+Type ?fortune into the R Console (so not into this qmd file). You probably get an error saying “No documentation for ‘fortune’ in specified packages and libraries”. But according to the internet (https://cran.r-project.org/web/packages/fortunes/fortunes.pdf) this function DOES exists. Get access to the fortune function and use it by inputting your birth-month.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~3 lines of code)
+install.packages("fortunes")
+library(fortunes)
+fortune("January")
+```
+
+#R10
+
+A programmer got completely confused and now their code below returns something weird. Which forbidden mathematical operation is done here?
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (1 line of comments)
+birthday_guests <- 8
+cake_slices <- 5
+my_bool <- birthday_guests < cake_slices
+cake_slices / my_bool
+# Dividing by 0 (as FALSE is interpreted as a 0)
+```
+
+#R11
+
+Make a sorted vector of 100 student grades. Use indexing to return the 1st, the 20th, and 80th element of the vector.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~2 lines of code)
+student_grades = sort(sample(x = 1:10, 100, replace = TRUE))
+student_grades[c(1, 20, 80)]
+```
+
+#R12
+
+Write a code to figure out how many letters there are in the alphabet. tip: ?LETTERS
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code)
+length(LETTERS)
+```
+
+#R13
+
+Remove the line of code that does not work like the other three.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of comments)
+letters2 = letters
+# remove: letters2 == letters; returns logicals
+letters2 <- letters
+letters -> letters2
+```
+
+#R14
+
+THIS TASK WILL ONLY BE REVEALED DURING THE TUTORIAL SESSIONS.
+```{r}
+fruits = c("b.n.n.s!", ".pples")
+gsub("\\.", "a", fruits) # Period is a special character that means any character
+# To truly replace a period it must be "\\." or "[.]"
+# also possible: gsub(".", "a", fruits, fixed = TRUE)
+```
+
+
+#R15
+
+Print the mean of the non-NA elements in this vector. Warnings are okay, if you understand them, but the printed mean should be a number (so not NA).
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1-2 lines of code; don't edit first line)
+horrible_numbers <- factor(c("25", pi, "NA", 1))
+horrible_numbers_numeric = as.numeric(as.character(horrible_numbers))
+mean(horrible_numbers_numeric, na.rm = TRUE)
+```
+
+#R16
+
+THIS TASK WILL ONLY BE REVEALED DURING THE TUTORIAL SESSIONS.
+```{r}
+birthday = "20092003"
+str_list = strsplit(birthday, split = "")
+first_sum = sum(as.numeric(unlist(str_list)))
+new_str_list = strsplit(as.character(first_sum), split = "")
+second_sum = sum(as.numeric(unlist(new_str_list)))
+personality = c("independent, ambitious", "sensitive, diplomatic", "expressive, sociable",
+         "practical, disciplined", "adventurous, freedom-loving", 
+         "caring, responsible", "introspective, analytical", 
+         "ambitious, power-oriented", "compassionate, idealistic")
+personality[second_sum]
+```
+
+
+#R17
+
+What is the product of the first 50 odd positive integers (1,3,5,...)? Don't type out all the numbers.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~2 lines of code) 
+odd = seq(from = 1, by = 2, length.out = 50)
+prod(odd)
+```
+
+#R18
+
+Often, researcher simulate data to make sure their planned data analysis will work with real participants. Make a matrix with a random number of rows and columns. Fill the matrix with missing values. Then use a single function to show the dimensions of the generated matrix. For the sake of reproducibility, make sure your script produces the same matrix each time.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~3-5 lines of code)
+set.seed(123)
+m = matrix(data = NA, nrow = sample(x = 1:100, size = 1), ncol = sample(x = 1:100, size = 1))
+dim(m)
+```
+
+#R19
+
+Now, we want 1325 subjects in the rows and 201 variables in columns. Which of the four matrix definitions is incorrect? What does this tell you about the use of function arguments in R?
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1-2 lines of comments)
+set.seed(1234)
+n_subjects <- 1325
+n_vars <- 201
+EEGData1 <- matrix(runif(n_subjects*n_vars), ncol=n_vars, nrow=n_subjects)
+EEGData2 <- matrix(runif(n_subjects*n_vars), n_subjects, n_vars)
+EEGData3 <- matrix(runif(n_subjects*n_vars), n_vars, n_subjects)
+EEGData4 <- matrix(ncol=n_vars, nrow=n_subjects, data=runif(n_subjects*n_vars))
+# EEGData3 is incorrect (1325 cols and 201 rows)
+# if a value inside a function is not specifically assigned to an argument, R assumes that the value is assigned to the default argument at the  position of the baseline function (the order of arguments and baseline values can be seen by ?function)
+```
+
+#R20
+
+We have twenty participants answering twenty IQ questions. We want to compute the number of correct responses per participant. Unfortunately, the code below returns only one number (instead of a number for each participant). How can we fix this issue? Hint: check help for sum()
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (edit 1 line of code)
+set.seed(1234)
+rows <- 20 -> cols 
+M <- matrix(sample(c(T, F), rows*cols, replace = T), rows, cols)
+rowSums(M) # Assuming that each participant is represent by one row
+```
+
+#R21
+
+Write R code to generate a `2x2x2` array filled with animal names (e.g., "lion", "whale)". Thus, the array should contain 8 unique values, each being an animal name. Also use `dimnames` when creating the array to label the rows (cuteness levels), columns (habitats), and slices (diet type).
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 long line of code)
+array(data = c("seahorse", "whale", "hedgehog", "lion", "dolphin", 
+               "fish", "cat", "tiger"), 
+                dim = c(2,2,2),
+                dimnames = list("cuteness levels" = c("very", "meh"),
+                                "habitats" = c("water", "land"),
+                                "diet types" = c("food", "also food")))
+```
+
+#R22
+
+The generated “love_hate_matrix” depicts the relationship between Harry Potter characters. "L" means that the character in the row loves the character in the column.
+
+Use position-based indexing to fill in the missing relationship between Ron and Hermione. Use name-based indexing to fill in the missing relationship between Snape and Harry.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~2 new lines of code)
+relationship_matrix <- matrix(c("", "L", "L", "H", "H", "L", "", "L", "H", "H", "L", NA, "", "H", "H","H", "H", "H", "", "L", NA, "H", "H", "L", ""), nrow = 5, byrow = TRUE)
+rownames(relationship_matrix) <- c("Harry", "Hermione", "Ron", "Draco", "Snape")
+colnames(relationship_matrix) <- c("Harry", "Hermione", "Ron", "Draco", "Snape")
+
+relationship_matrix[3,2] = "L"
+relationship_matrix["Snape", "Harry"] = "H"
+```
+
+#R23
+
+Below I tried to turn the diagonal elements of the love-hate matrix into missing values. However, it doesn't seem to work. Can you fix the code?
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (edit only last two lines of code)
+relationship_matrix <- matrix(c("", "L", "L", "H", "H", "L", "", "L", "H", "H",
+    "L", "L", "", "H", "H","H", "H", "H", "", "L", "complicated", "H", "H", "L",""), 
+    nrow = 5, byrow = TRUE)
+rownames(relationship_matrix) <- c("Harry", "Hermione", "Ron", "Draco", "Snape")
+colnames(relationship_matrix) <- c("Harry", "Hermione", "Ron", "Draco", "Snape")
+
+# my_diag <- diag(relationship_matrix)
+# relationship_matrix[my_diag == relationship_matrix] <- NA
+
+diag(relationship_matrix) = NA
+relationship_matrix
+```
+
+#R24
+
+I want to make the vector with a length of 8 in the following order: "a", "a", "b", "b", "c", "c", "d", "d". I want to use the rep function but rep(letters\[1:4\],2) does not work. Provide the improved version using only the function rep().
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code)
+rep(letters[1:4], each = 2)
+```
+
+#R25
+
+THIS TASK WILL ONLY BE REVEALED DURING THE TUTORIAL SESSIONS.
+```{r}
+data.frame("Name" = c("Gollum", "Smeagol", "Sauron", "Frodo", "Shelob", "Samwise"),
+           "First_appearance" = rep(c("The Hobbit", "LOTR"), each = 3),
+           "Morality" = rep(c("Bad", "Good"), times = 3),
+           "Dating_appeal" = seq(from = 0, to = 10, by = 2))
+```
+
+
+#R26
+
+The following code simulates grades for a hypothetical class. 1) Add a new column called final_grade to the dataframe and make it 40% assignment grade plus 60% exam grade.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL (~1 additional line of code)
+set.seed(1234)
+students <- 50
+
+grades <- data.frame(1:students,matrix(sample(8:20,students*2,TRUE)/2,,2))
+
+names(grades) <- c('student_ID','assignment_average','exam')
+
+grades$final_grade = 0.4 * grades$assignment_average + 0.6 * grades$exam
+```
+
+
+#R27
+
+In R one can use already available data sets by simply typing their name. Look at the InsectSprays dataset and export it as a .csv file to your working directory. How do you make sure that annoying/redundant row names are NOT included in the file?
+
+```{r g}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code)
+write.csv(x = InsectSprays, file = "InsectSprays.csv", row.names = FALSE)
+```
+
+
+#R28
+
+THIS TASK WILL ONLY BE REVEALED DURING THE TUTORIAL SESSIONS.
+```{r}
+mental_dis = read.csv2(file = url("https://raw.githubusercontent.com/hannesrosenbusch/schiphol_class/master/Kaggle_Dataset_Mental_Disorders.csv"), sep = ",")
+md2 = subset(mental_dis, mental_dis$Anorxia == "NO")
+md3 = subset(md2, md2$Mood.Swing == "NO")
+md4 = subset(md3, md3$Suicidal.thoughts == "NO")
+md5 = subset(md4, md4$Aggressive.Response == "NO")
+md6 = subset(md5, md5$Overthinking == "NO")
+md7 = subset(md6, md6$Euphoric > 3) # patient-111 remaining
+```
+
+
+
+#Radv1
+
+Use a built-in dataset to demonstrate the concept of indexing. Show how to select a row, a column, and a specific cell.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL 
+sleep[1,] # indexing first row
+sleep[,1] # indexing first column
+sleep[1,1] # indexing first cell
+```
+
+#Radv2
+
+Install a new package and use one of its functions without using the library() or require() function. Look online how to do that.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL 
+install.packages("beepr")
+beepr::beep(1)
+```
+
+#Radv3
+
+Simulate two variables and put them in a dataframe together. The first variable should have two values (i.e., a categorical variable like "cat" & "dog"). The second variable should be continuous (e.g., IQ values, or life expectancy) and be higher for one group (on average). Give your variables informative names and make sure your results are realistic and reproducible (i.e., multiple runs give the same numbers).
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL 
+set.seed(123) # set seed for reducible results
+
+# Variable partner with random values TRUE (has partner) and false (no partner)
+partner = sample(c(TRUE, FALSE), 50, replace = TRUE) 
+
+# Empty vector life satisfaction (LS)
+life_satisfaction = rep(NA, 50)
+
+# Simulate values (normally distributed) with mean 80 (high LS)
+life_satisfaction[partner == TRUE] = rnorm(length(partner[partner == TRUE]), mean = 80, sd = 15)
+
+# Simulate values (normally distributed) with mean 65 (low LS)
+life_satisfaction[partner == FALSE] = rnorm(length(partner[partner == FALSE]), mean = 65, sd = 15)
+
+# Ensure simulation was successful by group wise comparing means
+mean(life_satisfaction[partner == TRUE])
+mean(life_satisfaction[partner == FALSE])
+```
+
+#Radv4
+
+Demonstrate the use of the is.na() function for the purpose of missing value imputation. Use comments to explain what you're doing. You can first MAKE some missing values if your chosen dataset doesn't have any.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL
+
+# Load data set into environment
+sleep = sleep
+
+# Create NAs
+sleep$extra[c(1, 5, 10)] = NA
+
+# Calculate mean of extra without NAs
+extra_mean = mean(sleep$extra, na.rm = TRUE)
+
+# Replace NAs with mean of the scale extra
+sleep$extra[is.na(sleep$extra)] = extra_mean
+
+```
+
+#Radv5
+
+Make a list with named elements using the list() function. State in one short comment why a list is more useful than a vector/dataframe for your chosen context.
+
+```{r}
+#WRITE YOUR CODE INTO THIS CELL 
+info_book = list(title = "Harry Potter and the Philosopher's Stone",
+                 author = "JKR",
+                 rating = 7,
+                 would_read_again = FALSE,
+                 other_books_by_author = c("HP and the Chamber of Secrets", "HP and the Prisoner of Azkaban", "HP and the Goblet of Fire"))
+
+# List keeps all information neatly in one object allows for several modes of data (unlike vector) and for objects with elements of different length (unlike dataframes)
+```
+
+#Radv6
+
+Find an interesting discussion about an R topic on the websites stackoverflow or stackexchange. Put the link to the discussion in a comment and write a short sentence about why you find it interesting.
+
+```{r}
+#WRITE YOUR COMMENT INTO THIS CELL 
+# stackoverflow.com/questions/1295955/what-is-the-most-useful-r-trick
+# It is an interesting discussion to me since the "most useful r-trick" was apparently deemed the str() function, that we have already learned about in the first lecture
+```
+
+
+#Python1
+
+This Python code should run without errors. What would be the exact equivalent to the int() function if we had to translate it into R?
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of comments)
+first_number = 5
+second_number = "6"
+first_number + int(second_number)
+# in R: as.integer(), but as.numeric() works as well of course
+```
+
+#Python2
+
+In R, we use an R function to install packages, specifically install.packages(). In Python, we use a Bash command for that purpose (notice it says bash instead of python in the following code block). Write the bash commands to install the numpy and the pandas packages. You need to have pip installed on your computer.
+
+```{bash}
+##WRITE YOUR BASH COMMANDS INTO THIS CELL (~1-2 lines of code)
+pip install numpy
+pip install pandas
+```
+
+#Python3
+
+This code block should give the error "NameError: name 'np' is not defined". What line of code should you add before to make it work?
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (add ~1 line above code)
+import numpy as np
+another_array = np.zeros((2, 4, 6))
+```
+
+#Python4
+
+What went wrong in this code? How is this different from R? How can we make a true new copy of the numpy array?
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (add 2 comments; edit 1 line of code)
+another_array = np.zeros((2, 4, 6))
+new_array = another_array.copy() # .copy() creates a deep/true copy
+new_array[1, 2, 2] = 1
+print(another_array[1, 2, 2])
+
+# Simply using "=" assigns a new variable to the object. Changes to new_array then also reflect in another_array. In R, "a = b" simply creates a deep copy of b named a, no specifications needed.
+```
+
+#Python5
+
+This returns nan, why? Can you compute the mean with the missing value removed?
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (edit SECOND line of code)
+sample_scores = np.array([1, 6, 7, 8, 9, np.nan])
+print(np.nanmean(sample_scores)) # np.nanmean computes mean while ignoring nan
+```
+
+#Python6
+
+Make a 3 dimensional array of 4 by 3 by 5 with all elements being zero.
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (~1 line of code)
+np.zeros((4, 3, 5))
+```
+
+
+#Python7
+
+Print one string which combines all the filenames in your current working directory. If you have less than three files in your working directory, make some additional/empty files first.
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (~1-2 lines of code)
+import os
+print(", ".join(os.listdir()))
+```
+
+#Python8
+
+Make a dictionary called my_measurements. The first element of the dictionary should be called my_mood_measurements and be a list of 365 string values (either "happy" or "sad" for each day of the year). The second element of the dictionary should be called my_iq_measurements and be a list of 52 normally distributed IQ values. Check numpy's random module for simulating data.
+
+```{python}
+#WRITE YOUR CODE INTO THIS CELL (~1-5 lines of code)
+my_measurements = {"my_mood_measurements" : np.random.choice(["happy", "sad"], size = 365, replace = True), "my_iq_measurements" : np.random.normal(loc = 100, scale = 15, size = 52)}
+```

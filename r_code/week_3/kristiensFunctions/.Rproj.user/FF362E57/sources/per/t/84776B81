@@ -1,0 +1,28 @@
+{
+    "id": "84776B81",
+    "path": "~/ResMas Psych/PiPS/PiPS Github/PIPS/r_code/week_3/kristiensFunctions/man/initial_data_check.Rd",
+    "project_path": "man/initial_data_check.Rd",
+    "type": "r_doc",
+    "hash": "1363186227",
+    "contents": "",
+    "dirty": false,
+    "created": 1790867556988.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "10,1",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1790865985,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1790865985,
+    "read_only": true,
+    "read_only_alternatives": [
+        "R/initial_data_check.R"
+    ]
+}
